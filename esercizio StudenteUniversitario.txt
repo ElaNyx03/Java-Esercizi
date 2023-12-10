@@ -1,0 +1,204 @@
+/*Esercitazione del 02/10/2023
+Definire una classe Studente che rappresenta uno studente universitario, con i seguenti attributi:
+- matricola: un numero intero che identifica lo studente
+- nome: una stringa che contiene il nome dello studente
+- cognome: una stringa che contiene il cognome dello studente
+- esami: una hashmap che associa il nome di un esame (chiave) al voto ottenuto (valore)
+La classe Studente deve avere un costruttore che prende in input la matricola, il nome e il 
+cognome dello studente, e inizializza la hashmap degli esami vuota. Inoltre, la classe Studente
+deve avere i seguenti metodi:
+
+ - aggiungiEsame: un metodo che prende in input il nome di un esame e il voto ottenuto, e 
+aggiunge la coppia <esame, voto> alla hashmap degli esami.
+ Se l'esame è già presente nella 
+hashmap, il metodo deve sovrascrivere il voto precedente con quello nuovo (automatico con put).
+- rimuoviEsame: un metodo che prende in input il nome di un esame e lo rimuove dalla 
+hashmap degli esami, se presente. Se l'esame non è presente, il metodo non fa nulla.
+- media: un metodo che calcola e restituisce la media dei voti degli esami sostenuti dallo 
+studente. Se lo studente non ha sostenuto nessun esame, il metodo restituisce 0.
+- stampaEsami: un metodo che restituisce una stringa con la lista degli esami sostenuti dallo 
+studente con i relativi voti
+*/
+package universita;
+import java.util.HashMap;
+import java.util.Map.Entry;
+
+public class StudenteUniversitario {
+
+    public static class studente {
+        private int matricola, voto;
+        private String nome, cognome, nomeEsame;
+        private HashMap<String, Integer> esame = new HashMap<>();
+
+        public studente(int matricola, String nome, String cognome) {
+            this.matricola = matricola;
+            this.nome = nome;
+            this.cognome = cognome;
+        }
+
+        public int getMatricola() {
+            return matricola;
+        }
+
+
+
+
+	/**
+	 * @param matricola the matricola to set
+	 */
+	public void setMatricola(int matricola) {
+		this.matricola = matricola;
+	}
+
+
+
+
+	/**
+	 * @return the nome
+	 */
+	public String getNome() {
+		return nome;
+	}
+
+
+
+
+	/**
+	 * @param nome the nome to set
+	 */
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+
+
+	/**
+	 * @return the cognome
+	 */
+	public String getCognome() {
+		return cognome;
+	}
+
+
+	/**
+	 * @param cognome the cognome to set
+	 */
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
+
+
+	/**
+	 * @return the voto
+	 */
+	public int getVoto() {
+		return voto;
+	}
+
+
+
+
+	/**
+	 * @param voto the voto to set
+	 */
+	public void setVoto(int voto) {
+		this.voto = voto;
+		
+	}
+
+
+
+
+	/**
+	 * @return the nomeEsame
+	 */
+	public String getNomeEsame() {
+		return nomeEsame;
+	}
+
+
+
+
+	/**
+	 * @param nomeEsame the nomeEsame to set
+	 */
+	
+	public void setNomeEsame(String nomeEsame) {
+		this.nomeEsame = nomeEsame;
+	}
+	
+	
+	
+	//metodi classe studente
+    // Method to add an exam result
+    public void aggiungiEsame(String nomeEsame, int voto) {
+        esame.put(nomeEsame, voto);
+    }
+
+
+	
+	public void rimuoviEsame (String nomeEsame,int voto) {
+		esame.remove(getNomeEsame(),voto);
+	}
+
+	// Calcola e restituisce la media dei voti degli esami sostenuti
+	
+	
+	public double media() {
+	    if (esame.isEmpty()) {
+	        return 0.0; // Se non ci sono esami, la media è 0. la mappa degli esami (`esami`) è vuota. 
+	    }
+	    //Se non ci sono esami registrati per lo studente, ho restituito direttamente 0.0 come media. 
+
+	    int totalVoti = 0;
+//Ho utilizzato un solo ciclo per ciascuno per scorrere tutti i voti
+//Abbiamo un ciclo for-eachche scorre attraverso tutti i voti degli esami 
+	 //memorizzati nella mappa esame
+	    for (int voto : esame.values()) {
+	        totalVoti += voto;
+	    }
+
+	    return (double) totalVoti / esame.size();
+	}
+	    
+	    //metodo stampaEsami
+	   // dichiarando una stringa resulte la inizializziamo con la parola Esami 
+	  
+
+    // Metodo per stampare gli esami con gestione degli errori
+	//Il blocco tryviene utilizzato per racchiudere il codice che 
+	//potrebbe generare un'eccezione (errore),
+	// mentre il blocco catchviene utilizzato per gestire l'eccezione 
+	//se si verifica.
+    public void stampaEsami() {
+        try {//Nel blocco try, c'è il codice che esegue la stampa del nome dello studente e degli esami. 
+            System.out.println("Nome: " + nome);    
+            System.out.println("::::Esami::::");
+            //Questo è il codice che potrebbe causare un errore, ad esempio, 
+            //se ci fosse un problema nell'accesso o nella manipolazione dei dati.
+            for (Entry<String, Integer> entry : esame.entrySet()) {
+                String nomeEsame = entry.getKey();
+                int voto = entry.getValue();
+                System.out.println(nomeEsame + ": " + voto);
+            }
+            //gestione dell'errore eccezione contiene informazioni sull'errore che è stato generato
+        } catch (Exception eccezione) {
+            System.err.println("Si è verificato un errore!!!: " + eccezione.getMessage());
+        }
+    }
+}
+   // Creo un nuovo oggetto studente chiamato studente1.
+    
+    //Il costruttore studente viene chiamato con tre argomenti: 
+    //1per la matricola, ""per il nome e ""per il cognome.
+public static void main(String[] args){
+	System.out.print(":::::::::::::\n");
+    studente studente1 = new studente(1, "Rocco", "Centimetri");
+    studente1.aggiungiEsame("Matematica", 40);
+    studente1.aggiungiEsame("Fisica", 24);
+
+    studente1.stampaEsami();
+	System.out.print(":::::::::::::\n");
+}
+}
