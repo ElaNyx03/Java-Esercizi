@@ -1,8 +1,9 @@
 <div align="center">
 <img width="30%" src="1701192416677.png" />
  </div> 
- 
-<img width="200%" src="hr.gif" />
+ <div align="center">
+<img width="20%" src="hr.gif" /><br><br>
+</div>
 <div align="center">
 
 <img align="center" title="Github" alt="Github" width="90px" src="https://media.tenor.com/4HB9Nz7r4PsAAAAi/java-coffee.gif" /> 
@@ -15,6 +16,12 @@ Esercizi Java - lista della spesa e metodo per calcolare il totale dei prezzi co
 <img width="200%" src="hr.gif" />
 <img width="100%" src="Screenshot 2023-12-10 141455.png" />
 <img width="200%" src="hr.gif" />
+
+## gestione negozio
+<img width="50%" src="Screenshot 2023-12-10 144121.png" />
+</div>
+<div align="center">
+<img width="50%" src="hr.gif" />
 </div>
 
 <div align="center">
